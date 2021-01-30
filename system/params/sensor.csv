@@ -1,0 +1,7 @@
+Sensor,Minimum,Maximum,Accuracy,Unit
+Temperature,-20,100,1,°C
+Relative Humidity,0,100,1,%
+Air Pressure,0,100,0.1,kPa
+Dust Concentration,0,100,2,%
+Wind speed,0,20,0.1,m/s
+Light level,0,5000,10,cd

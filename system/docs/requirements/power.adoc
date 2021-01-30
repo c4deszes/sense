@@ -1,0 +1,35 @@
+= Power requirements
+
+This document specifies the requirements of the power input.
+
+== Parameters
+
+[format="csv", options="header"]
+|===
+include::../../params/power.csv[]
+|===
+
+== Requirements
+
+=== Operational voltage
+
+The product shall be operational when the supply voltage is above
+<<Parameters,param_power_low_error>> and below
+<<Parameters,param_power_high_error>>
+
+=== Reverse voltage
+
+The product shall be operational when the supply voltage is restored after
+a reverse or negative supply voltage event.
+
+=== Voltage monitoring
+
+The product shall monitor it's input voltage.
+
+=== Current consumption
+
+The product shall not consume more than <<Parameters,param_power_max_current>>
+under any operating conditions.
+
+The produt shall not consume more than
+<<Parameters,param_power_max_sleep_current>> in sleep mode.

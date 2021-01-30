@@ -1,0 +1,50 @@
+= Diagnostic requirements
+
+This document specifies the diagnostic requirements of the product.
+
+== Parameters
+
+[format="csv", options="header"]
+|===
+include::../../params/communication.csv[]
+|===
+
+[format="csv", options="header"]
+|===
+include::../../params/diagnostics.csv[]
+|===
+
+== Requirements
+
+=== Interfaces
+
+The diagnostic mode shall be be accessible via UART headers on the PCB or via
+a TCP server hosted when the product is in WiFi access point mode.
+
+=== Product information
+
+In diagnostic mode the following product information shall be readable:
+
+- Product Serial number
+- Product MAC address
+
+=== Product state
+
+In diagnostic mode the following status information shall be readable:
+
+- Power state
+- Temperature sensor state
+- Humidity sensor state
+- Pressure sensor state
+- Dust sensor state
+- Wind speed sensor state
+- Light level sensor state
+
+=== Connection state
+
+In diagnostic mode the following connection status information shall be readable:
+
+- Current WiFi connection mode
+- Current WiFi connection status
+- Last WiFi station connection status
+- Current MQTT connection status

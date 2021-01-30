@@ -1,0 +1,6 @@
+Id,Parameter,Value,Unit
+param_wifi_ap_por_timeout,WiFi AP mode timeout,15000,ms
+param_wifi_sta_connection_timeout,WiFi STA connection timeout,2000,ms
+param_wifi_sta_retry_timeout,WiFi STA retry timeout,10000,ms
+param_mqtt_connection_timeout,MQTT connection timeout,1000,ms
+param_mqtt_retry_tmeout,MQTT retry timeout,10000,ms

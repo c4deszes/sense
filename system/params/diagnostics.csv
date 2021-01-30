@@ -1,0 +1,3 @@
+Id,Parameter,Value,Unit
+param_diag_uart_baudrate,Diagnostic UART Baudrate,19200,bps
+param_diag_tcp_port,Diagnostic TCP Server Port,1000,-
