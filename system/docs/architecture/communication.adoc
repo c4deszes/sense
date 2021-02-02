@@ -1,0 +1,150 @@
+= Communication component
+
+== Interface
+
+The communication component provides the following interfaces:
+
+- WiFi connection
+- MQTT connection
+- Diagnostic input and output
+
+== Parameters
+
+[format="csv", options="header"]
+|===
+include::params/communication.csv[]
+|===
+
+== States
+
+=== WiFi
+
+The following diagram describes the WiFi connection's statemachine.
+
+[nomnoml]
+....
+[<start>st]->[<state>NO_INIT]
+[<state>NO_INIT]->[<choice>Has module error?]
+[Has module error?] no ->[<state>AP_MODE]
+[Has module error?] yes -> [<state>INIT_ERROR]
+[AP_MODE] on timer elapsed & wifi ssid configured & no client connected -> [<state>STA_DISCONNECTED]
+[STA_DISCONNECTED] on first attempt / retry timeout -> [<state>STA_CONNECTING]
+[STA_CONNECTING] on success -> [<state>STA_CONNECTED]
+[STA_CONNECTING] on timeout -> [STA_DISCONNECTED]
+[STA_CONNECTED] on dropout -> [STA_DISCONNECTED]
+....
+
+==== Description
+
+The component starts in uninitialized state and goes into Access Point mode if
+the module initialization has succeeded. The component stays in this state until
+either a client is connected, the internal timer has not elapsed or WiFi settings
+are not configured. Once all of this conditions are gone the component will attempt
+to connect to the configured Access Point.
+
+=== MQTT
+
+The following diagram describes the MQTT connection's statemachine.
+
+[nomnoml]
+....
+[<start>st]->[<state>NO_INIT]
+[<state>NO_INIT] on WiFi entering STA_CONNECTED -> [<state>MQTT_DISCONNECTED]
+[MQTT_DISCONNECTED] on first attempt / retry timeout -> [<state>MQTT_CONNECTING]
+[<state>MQTT_CONNECTING] on success -> [<state>MQTT_CONNECTED]
+[MQTT_CONNECTING] on timeout -> [MQTT_DISCONNECTED]
+[MQTT_CONNECTED] on dropout -> [MQTT_DISCONNECTED]
+....
+
+==== Description
+
+The component starts in uninitialized state and goes into disconnected state once
+WiFi has successfully connected to an Access Point. The component then will try
+and periodically attempt to connect to the configured broker.
+
+Once the device has successfully connected it will start broadcasting the sensor
+values.
+
+=== Diagnostics
+
+The following diagram describes the Diagnostic TCP server's statemachine.
+
+[nomnoml]
+....
+[<start>st]->[<state>NO_INIT]
+[<state>NO_INIT] on WiFi AP Mode -> [<state>DIAGNOSTIC_TCP_DISCONNECTED]
+[<state>DIAGNOSTIC_TCP_DISCONNECTED] on connect -> [<state>DIAGNOSTIC_TCP_CONNECTED]
+[<state>DIAGNOSTIC_TCP_DISCONNECTED] on timeout -> [<end>end]
+[<state>DIAGNOSTIC_TCP_CONNECTED] on disconnect -> [<state>DIAGNOSTIC_TCP_DISCONNECTED]
+[<state>DIAGNOSTIC_TCP_CONNECTED] on connection forced -> [<end>end]
+....
+
+==== Description
+
+The component starts in uninitialized state and goes into disconnected state once
+the WiFi has entered Access Point mode. The component will wait for a TCP connection
+on the diagnostic TCP port, while this connection
+
+== Sequences
+
+=== First boot
+
+Device is not yet configured, configuration is provided by the user via
+diagnostic TCP server.
+
+[seqdiag]
+....
+seqdiag {
+  Communication -> WiFi [label = "InitModule"];
+  Communication <-- WiFi [label = "INIT_OK"];
+
+  Communication -> WiFi [label = "StartAp"];
+  Communication <-- WiFi [label = "AP_MODE"];
+
+  === User configures WiFi & MQTT settings ===
+
+  Communication -> Diagnostics [label = "ConnectClient"];
+  Communication <-- Diagnostics [label = ""];
+
+  Diagnostics -> WiFi [label = "Set Configuration"];
+  Diagnostics <-- WiFi [label = "OK"];
+
+  Diagnostics -> MQTT [label = "Set Configuration"];
+  Diagnostics <-- MQTT [label = "OK"];
+
+  Diagnostics -> Communication [label = "Reload"];
+  Diagnostics <-- Communication [label = ""];
+
+  === Communication Startup ===
+
+  Communication -> WiFi [label = "StartSta"];
+  Communication <-- WiFi [label = "STA_CONNECTED"];
+
+  Communication -> MQTT [label = "ConnectMqtt"];
+  Communication <-- MQTT [label = "MQTT_CONNECTED"];
+}
+....
+
+=== Successful connection
+
+Device is already configured with the correct WiFi and MQTT settings and the
+connections succeed.
+
+[seqdiag]
+....
+seqdiag {
+  Communication -> WiFi [label = "InitModule"];
+  Communication <-- WiFi [label = "INIT_OK"];
+
+  Communication -> WiFi [label = "StartAp"];
+  Communication <-- WiFi [label = "AP_MODE"];
+
+  ... AP Mode timeout, no active connection ...
+
+  Communication -> WiFi [label = "StartSta"];
+  Communication <-- WiFi [label = "STA_CONNECTED"];
+
+  Communication -> MQTT [label = "ConnectMqtt"];
+  Communication <-- MQTT [label = "MQTT_CONNECTED"];
+}
+....

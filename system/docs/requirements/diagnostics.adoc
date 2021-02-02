@@ -6,12 +6,12 @@ This document specifies the diagnostic requirements of the product.
 
 [format="csv", options="header"]
 |===
-include::../../params/communication.csv[]
+include::params/communication.csv[]
 |===
 
 [format="csv", options="header"]
 |===
-include::../../params/diagnostics.csv[]
+include::params/diagnostics.csv[]
 |===
 
 == Requirements

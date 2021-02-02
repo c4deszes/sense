@@ -1,0 +1,123 @@
+= Sensor components
+
+== Common sensor component
+
+=== Interface
+
+Each sensor provides the following values:
+
+- Sensor state _(INIT_OK, INIT_ERROR)_
+- Sensor value state _(OK, LOW, HIGH, etc.)_
+- Sensor value (floating point)
+
+=== States
+
+Each sensor implements the following state machine:
+
+[nomnoml]
+....
+[<start>st]->[<state>NO_INIT]
+[<state>NO_INIT]->[<choice>Has Error?]
+[<choice>Has Error?] no ->[<state>INIT_OK]
+[<choice>Has Error?] yes -> [<state>INIT_ERROR]
+....
+
+== Temperature sensor
+
+=== States
+
+The temperature sensor implements a statemachine that can indicate
+overtemperature and freeze conditions.
+
+[nomnoml]
+....
+[<start>st]->[<state>NA]
+[<state>NA]->[<state>OK]
+[<state>NA]->[<state>LOW]
+[<state>NA]->[<state>HIGH]
+[<state>OK]->[<state>LOW]
+[<state>LOW]->[<state>OK]
+[<state>OK]->[<state>HIGH]
+[<state>HIGH]->[<state>OK]
+....
+
+== Humidty sensor
+
+=== States
+
+The humidty sensor implements a statemachine that can indicate too high
+humidity for certain components to operate in.
+
+[nomnoml]
+....
+[<start>st]->[<state>NA]
+[<state>NA]->[<state>OK]
+[<state>NA]->[<state>HIGH]
+[<state>OK]->[<state>HIGH]
+[<state>HIGH]->[<state>OK]
+....
+
+== Air pressure sensor
+
+=== States
+
+The air pressure sensor implements a statemachine that goes into _OK_ state
+after the first successful value acquisition. No error reaction is tied to it's
+value in the current design.
+
+[nomnoml]
+....
+[<start>st]->[<state>NA]
+[<state>NA]->[<state>OK]
+[<state>OK]
+....
+
+== Dust concentration sensor
+
+=== States
+
+The dust concentration sensor implements a statemachine that goes into _OK_ state
+after the first successful value acquisition. No error reaction is tied to it's
+value in the current design.
+
+[nomnoml]
+....
+[<start>st]->[<state>NA]
+[<state>NA]->[<state>OK]
+[<state>OK]
+....
+
+== Wind speed sensor
+
+=== States
+
+The wind speed sensor (anemometer) implements a statemachine that goes into _OK_ state
+after the first successful value acquisition. Furthermore the anemometer may be be
+disabled for hardware protection as well as go into a _SATURATED_ state where
+the sensor value may start to max out.
+
+[nomnoml]
+....
+[<start>st]->[<state>NA]
+[<state>NA]->[<state>OK]
+[<state>OK]->[<state>DISABLED]
+[<state>DISABLED]->[<state>OK]
+[<state>OK]->[<state>SATURATED]
+[<state>SATURATED]->[<state>OK]
+[<state>SATURATED]->[<state>DISABLED]
+....
+
+== Light level sensor
+
+=== States
+
+The light level sensor implements a statemachine that goes into _OK_ state
+after the first successful value acquisition. No error reaction is tied to it's
+value in the current design.
+
+[nomnoml]
+....
+[<start>st]->[<state>NA]
+[<state>NA]->[<state>OK]
+[<state>OK]
+....

@@ -6,7 +6,7 @@ This document specifies the communication requirements of the product.
 
 [format="csv", options="header"]
 |===
-include::../../params/communication.csv[]
+include::params/communication.csv[]
 |===
 
 == Requirements
@@ -18,13 +18,20 @@ The product shall act as a WiFi station.
 === WiFi Configuration
 
 The WiFi configuration shall be configurable via the
-<<diagnostics.adoc,diagnostic mode>>.
+xref:diagnostics.adoc[diagnostic mode].
 
 === WiFi States
 
-On power on reset the product shall act a WiFi Access Point for 
-<<Parameters,param_wifi_ap_por_timeout>>, afterwards the product shall attempt
-to connect to the configured WiFi Access Point as a Station. 
+On power on reset the product shall detect if there's a problem initializing
+the WiFi module and set it's internal state accordingly.
+
+On power on reset the product shall act a WiFi Access Point for atleast
+<<Parameters,param_wifi_ap_por_timeout>> or more if there's an active client
+connection, afterwards the product shall attempt to connect to the configured 
+WiFi Access Point as a Station. 
+If the WiFi isn't configured correctly (empty SSID) the product shall stay in
+AP mode until configuration is set and the device is either reset or connection
+is forced via diagnostic commands.
 
 If the product is unable to connect within
 <<Parameters,param_wifi_sta_connection_timeout>> then the product shall attempt
@@ -37,12 +44,13 @@ The product shall publish MQTT messages.
 === MQTT Configuration
 
 The MQTT configuration shall be configurable via the
-<<diagnostics.adoc,diagnostic mode>>.
+xref:diagnostics.adoc[diagnostic mode].
 
 === MQTT States
 
 After the product has successfully connected to the configured WiFi Access Point
-it shall attempt to connect to the configured MQTT broker.
+it shall attempt to connect to the configured MQTT broker, unless there's configuration
+missing.
 
 If the product is unable to connect within
 <<Parameters,param_mqtt_connection_timeout>> then the product shall attempt

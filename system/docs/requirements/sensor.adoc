@@ -22,7 +22,7 @@ The capability list below is restricted by the product's operational range.
 
 [format="csv", options="header"]
 |===
-include::../../params/sensor.csv[]
+include::params/sensor.csv[]
 |===
 
 == Sensor states

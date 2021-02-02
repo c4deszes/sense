@@ -3,5 +3,6 @@ param_power_low_error,Voltage Low Error Threshold,6.0,V
 param_power_low_threshold,Voltage Low Threshold,9.0,V
 param_power_high_threshold,Voltage High Threshold,16.0,V
 param_power_high_error,Voltage High Error Threshold,30.0,V
+param_power_sample_period,Voltage Sample Period,100,ms
 param_power_max_current,Maximum Current Consumption,0.5,A
 param_power_max_sleep_current,Maximum Sleep Current,200,uA

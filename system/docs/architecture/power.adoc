@@ -1,0 +1,42 @@
+= Power component design
+
+== Interface
+
+The power interface provides physical power to hardware components, the input
+voltage value and the input voltage state.
+
+== Parameters
+
+[format="csv", options="header"]
+|===
+include::params/power.csv[]
+|===
+
+== Power monitoring
+
+=== States
+
+The power component inherits the xref:sensor.adoc#States[sensor statemachine] and extends it with it's
+own statemachine with the purpose of providing other components information of possibly damaging
+or edge case conditions. Components may reference the states below and use them for error reactions.
+
+[nomnoml]
+....
+#direction: right
+#spacing: 60
+[<start>s]->[<state>NA]
+[<state>NA]->[<state>OK]
+[<state>NA]overvoltage->[<state>HIGH]
+[<state>NA]undervoltage->[<state>LOW]
+[<state>OK]overvoltage->[<state>HIGH]
+[<state>OK]undervoltage->[<state>LOW]
+[<state>LOW]overvoltage->[<state>HIGH]
+[<state>LOW]->[<state>OK]
+[<state>HIGH]undervoltage->[<state>LOW]
+[<state>HIGH]->[<state>OK]
+....
+
+==== Description
+
+The component starts in an _NA_ state and switches between LOW, OK, HIGH states
+after every sample depending on the sensed voltage value.
