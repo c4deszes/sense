@@ -1,0 +1,17 @@
+# system related changes
+sys/req:
+  - system/docs/requirements/*
+sys/arch:
+  - system/docs/architecture/*
+sys/config:
+  - system/params/*
+sys/test:
+  - system/test/*
+
+# software related changes
+sw/req:
+  - software/docs/requirements/*
+sw/arch:
+  - software/docs/architecture/*
+sw/test:
+  - software/test/*
