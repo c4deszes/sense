@@ -1,0 +1,56 @@
+= System architecture
+
+This document describes the overall system architecture, along with examples of
+how this product is integrated into larger systems.
+
+== Architecture
+
+The following diagram describes the product's internal architecture
+
+[blockdiag]
+....
+blockdiag {
+	power_in [label = "Power In"];
+	power [label = "DC/DC converter"];
+	communication [label = "u-blox NINA-W102"];
+	processor [label = "ATSAMD21G18A"];
+	boschsensor [label = "BME280"];
+	dustsensor [label = "GP2Y1010AU"];
+	lightsensor [label = "BH1750"];
+	anemometer [label = "Anemometer"];
+
+	power_in -> power;
+	power -> processor;
+	communication <-> processor;
+	processor <- boschsensor;
+	processor <- dustsensor;
+	processor <- lightsensor;
+	processor <-> anemometer;
+}
+....
+
+=== Detailed designs
+
+- xref:power.adoc[Power component]
+- xref:sensor.adoc[Sensor]
+- xref:communication.adoc[Communication]
+
+== Product integration
+
+The product is intended to be integrated into a larger system consisting of
+multiple sensors and potentially actuators.
+
+The product can be part of a network where multiple sensors publish messages
+to the same message broker.
+
+[nwdiag]
+....
+nwdiag {
+  network WiFi {
+    "MQTT broker" [address = "mqtt.broker.local"];
+    Sensor1 [address = "192.168.1.2"];
+    Sensor2 [address = "192.168.1.3"];
+	Sensor3 [address = "192.168.1.4"];
+  }
+}
+....

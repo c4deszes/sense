@@ -1,1 +1,7 @@
+# VSCode
 .vscode/
+
+# Gradle buildship
+.gradle/
+.settings
+.project

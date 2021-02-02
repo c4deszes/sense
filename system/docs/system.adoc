@@ -1,0 +1,15 @@
+= Sense overview document
+
+== System Requirements
+
+- xref:requirements/communication.adoc[Communication requirements]
+- xref:requirements/diagnostics.adoc[Diagnostics requirements]
+- xref:requirements/power.adoc[Power requirements]
+- xref:requirements/sensor.adoc[Sensor requirements]
+
+== System architecture
+
+- xref:architecture/system.adoc[System overview]
+- xref:architecture/communication.adoc[Communication component]
+- xref:architecture/power.adoc[Power component]
+- xref:architecture/sensor.adoc[Sensor components]

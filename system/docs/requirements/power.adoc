@@ -6,7 +6,7 @@ This document specifies the requirements of the power input.
 
 [format="csv", options="header"]
 |===
-include::../../params/power.csv[]
+include::params/power.csv[]
 |===
 
 == Requirements

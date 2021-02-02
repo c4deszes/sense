@@ -1,0 +1,9 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+}
+
+include(':system')
+
+rootProject.name = 'Sense'
