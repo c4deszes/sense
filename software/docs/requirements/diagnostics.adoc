@@ -1,0 +1,45 @@
+= Diagnostics
+
+This document specifies the diagnostic software requirements of the product.
+
+== Requirements
+
+=== Interfaces
+
+The diagnostic mode shall be accessible via UART, the baudrate shall be 115200bps
+with 8 data bit, even parity and a single stop bit (115200/8/E/1).
+
+The diagnostic mode shall also be available in WiFi access point mode, and in
+WiFi station mode if it's enabled.
+
+=== Product information
+
+In diagnostic mode the following commands shall be available:
+
+- Read Serial Number
+- Read MAC Address
+
+=== Product state
+
+In diagnostic mode the following commands shall be available:
+
+- Read Power sensor
+- Read Temperature sensor
+- Read Humidity sensor
+- Read Pressure sensor
+- Read Dust sensor
+- Read Wind speed sensor
+- Read Light level sensor
+
+- Reload configuration
+- Reset
+
+=== Connection state
+
+In diagnostic mode the following commands shall be available:
+
+- Read WiFi status
+- Read Last WiFi station connection status
+- Read MQTT connection status
+
+- Reconnect

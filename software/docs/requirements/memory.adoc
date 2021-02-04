@@ -1,0 +1,50 @@
+= Memory and configuration
+
+== Requirements
+
+=== Product information
+
+The software shall store information about the product instance.
+
+The following product information shall be stored in non volatile memory.
+
+- Product Serial number
+- Software version number
+
+=== WiFi configuration
+
+The software shall store the WiFi configuration in non volatile memory.
+
+The following WiFi settings shall be stored in non volatile memory.
+
+- WiFi SSID
+- WiFi Password
+
+=== MQTT configuration
+
+The software shall store the MQTT configuration in non volatile memory.
+
+The following MQTT settings shall be stored in non volatile memory.
+
+- MQTT broker hostname
+- MQTT broker port
+- MQTT username
+- MQTT password
+- MQTT topic name
+
+=== Diagnostic settings
+
+The software shall store the configuration of Diagnostics in non volatile memory.
+
+The following diagnostic settings shall be stored in non volatile memory.
+
+- Diagnostics over WiFi AP enabled
+- Diagnostics over WiFi STA enabled
+
+=== Dust sensor calibration information
+
+The software shall store dust sensor calibration information in non volatile memory.
+
+=== Anemometer calibration information
+
+The software shall store wind sensor calibration information in non volatile memory.

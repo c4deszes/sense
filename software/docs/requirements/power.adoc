@@ -1,0 +1,15 @@
+= Power requirements
+
+This document specifies the software requirements for managing product power.
+
+== Requirements
+
+=== Voltage monitoring
+
+The product shall monitor it's input voltage and keep a 
+
+=== Current consumption
+
+The product shall not consume more than _maximum current_ under any operating conditions.
+
+The produt shall not consume more than _sleep mode current_ in sleep mode.

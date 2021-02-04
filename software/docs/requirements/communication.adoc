@@ -1,0 +1,44 @@
+= Software communication
+
+This document specifies the communication requirements of the software.
+
+== Requirements
+
+=== WiFi Communication
+
+=== WiFi Configuration
+
+The WiFi configuration shall be configurable via the
+xref:diagnostics.adoc[diagnostic mode].
+
+=== WiFi States
+
+After power on reset the software shall detect if there's a problem initializing
+the WiFi module and set the WiFi state to _MODULE_ERROR_.
+
+//TODO: add link to System parameter
+After module initialization the software shall act a WiFi Access Point for _AP timeout_
+or more if there's an active client
+connection, afterwards the software shall attempt to connect to the configured 
+WiFi Access Point as a Station. 
+If the WiFi isn't configured correctly (empty SSID) the software shall stay in
+AP mode until configuration is set and the device is either reset or connection
+is forced via diagnostic commands.
+
+//TODO: add link to System parameter
+If the software is unable to connect within then the software shall attempt
+reconnecting after _retry timeout_.
+
+=== MQTT Communication
+
+//TODO: add link to System parameter
+The software shall publish MQTT messages every _Publish interval_.
+
+=== MQTT States
+
+The software shall only attempt an MQTT connection once the WiFi connection
+has been secured.
+
+//TODO: add link to System parameter
+If the software is unable to connect within _MQTT timeout_ then the software
+shall attempt reconnecting earliest after _MQTT retry timeout_.

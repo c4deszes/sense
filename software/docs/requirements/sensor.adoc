@@ -1,0 +1,25 @@
+= Sensor requirements
+
+== Sensor stack
+
+The following values are measured:
+
+- Ambient temperature
+- Relative humidity
+- Air pressure
+- Dust concentration
+- Wind speed
+- Light level
+
+=== Capabilities
+
+The product shall be able to measure environment states according to table below.
+
+== Sensor states
+
+On power on reset each sensor shall start in *NO_INIT* state.
+
+The microcontroller shall attempt to initialize each sensor individually then
+based on the internal communication, peripheral states shall decide whether
+the sensor is functional and assign either *INIT_OK* or *INIT_ERROR* states
+accordingly.

@@ -1,0 +1,9 @@
+= Software overview
+
+== Software Requirements
+
+- xref:requirements/communication.adoc[Communication requirements]
+- xref:requirements/diagnostics.adoc[Diagnostic requirements]
+- xref:requirements/memory.adoc[Memory requirements]
+- xref:requirements/power.adoc[Power requirements]
+- xref:requirements/sensor.adoc[Sensor requirements]
