@@ -7,6 +7,7 @@ repositories {
 }
 
 asciidoctor {
+  baseDir rootProject.projectDir
   sourceDir file('docs')
   outputDir file("$buildDir/docs")
 }

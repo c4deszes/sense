@@ -1,0 +1,2 @@
+Id,Parameter,Value,Unit
+param_mqtt_publish_interval,MQTT publish interval,5000,ms

@@ -9,7 +9,7 @@ voltage value and the input voltage state.
 
 [format="csv", options="header"]
 |===
-include::params/power.csv[]
+include::system/params/power.csv[]
 |===
 
 == Power monitoring
