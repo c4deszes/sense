@@ -12,7 +12,7 @@ The communication component provides the following interfaces:
 
 [format="csv", options="header"]
 |===
-include::params/communication.csv[]
+include::system/params/communication.csv[]
 |===
 
 == States

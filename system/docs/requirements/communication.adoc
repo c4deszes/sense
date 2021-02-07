@@ -6,7 +6,7 @@ This document specifies the communication requirements of the product.
 
 [format="csv", options="header"]
 |===
-include::params/communication.csv[]
+include::system/params/communication.csv[]
 |===
 
 == Requirements

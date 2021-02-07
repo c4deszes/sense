@@ -15,16 +15,6 @@ The following values are measured:
 
 The product shall be able to measure environment states according to table below.
 
-[NOTE]
-====
-The capability list below is restricted by the product's operational range.
-====
-
-[format="csv", options="header"]
-|===
-include::system/params/sensor.csv[]
-|===
-
 == Sensor states
 
 On power on reset each sensor shall start in *NO_INIT* state.
