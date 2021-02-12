@@ -1,0 +1,26 @@
+= Software architecture Design alternatives
+
+== No aggregate
+
+The Sensor Aggregator may be seen as a monolith pattern, the alternative would
+be to wire each sensor to the modules that depend on it.
+
+|===
+|*Pro* | *Con*
+
+|Monolith is avoided, in case of a new sensor only the dependent modules have to
+be modified
+|Too many dependencies having to be injected into the other modules
+|===
+
+== Merging Application Main with Signal Publisher
+
+The Signal Publisher doesn't have many responsibilities therefore it could
+be merged into Application Main.
+
+|===
+|*Pro* | *Con*
+
+|Reduces complexity of the architecture
+|Increases complexity of Application Main
+|===

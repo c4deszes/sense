@@ -1,4 +1,4 @@
-= Sense overview document
+= System domain overview
 
 == System Requirements
 

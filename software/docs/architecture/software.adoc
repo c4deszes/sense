@@ -1,0 +1,112 @@
+= Software architecture overview
+
+This document describes the overall software architecture and their interactions,
+as well as integration of the software into larger systems.
+
+== Architecture
+
+Below is a diagram of the software architecture.
+
+[plantuml,software-architecture-details,svg]
+....
+@startuml
+!include C4_Component.puml
+
+LAYOUT_LEFT_RIGHT()
+
+title Sensor Software Architecture
+
+System_Boundary(software, "Software") {
+	System_Boundary(comm, "Communication Layer") {
+		Component(wifi, "WiFi Connection Manager", "WiFi", "Provides access to the WiFi connection")
+		Component(mqtt, "MQTT Connection Manager", "Mqtt", "Provides access to the MQTT connection")
+		Component(serial, "Serial Connection Manager", "Serial", "Provides access to the Serial connection")
+
+		Rel(mqtt, wifi, "GetNetworkInterface")
+	}
+	System_Boundary(sensor, "Sensor Layer") {
+		Container(sensor_aggregator, "Sensor Aggregator", "Sensors", "Aggregates all sensor values and states into a single interface")
+		Component(temperature, "Temperature Sensor", "Sensor", "Provides temperature values")
+		Component(humidity, "Humidity Sensor", "Sensor", "Provides humidity values")
+		Component(pressure, "Pressure Sensor", "Sensor", "Provides pressure values")
+		Component(dust, "Dust Sensor", "Sensor", "Provides dust concentration values")
+		Component(light, "Light Sensor", "Sensor", "Provides light level values")
+		Component(wind, "Wind Sensor", "Sensor", "Provides wind speed values")
+
+		Component(power, "Power Handler", "Sensor", "Provides power monitoring and low power control")
+
+		Rel(sensor_aggregator, temperature, "GetValue")
+		Rel(sensor_aggregator, humidity, "GetValue")
+		Rel(sensor_aggregator, pressure, "GetValue")
+		Rel(sensor_aggregator, dust, "GetValue")
+		Rel(sensor_aggregator, light, "GetValue")
+		Rel(sensor_aggregator, wind, "GetValue")
+		Rel(sensor_aggregator, power, "GetValue")
+		Rel(sensor_aggregator, power, "Enter Low Power Mode")
+	}
+	System_Boundary(app, "Application Layer") {
+		Component(application, "Application Main", "Application", "Executes main application code")
+		Component(configuration, "Configuration Manager", "Configuration", "Provides access to non-volatile memory")
+		Component(diagnostics, "Diagnostics Controller", "Diagnostics", "Provides diagnostic access to the device")
+		Component(publisher, "Signal Publisher", "Publisher", "Periodically sends out sensor values")
+
+		Rel(application, publisher, "")
+		Rel(application, diagnostics, "")
+		Rel(application, configuration, "")
+	}
+
+	Rel(diagnostics, wifi, "GetNetworkInterface")
+	Rel(diagnostics, serial, "GetSerialInterface")
+	Rel(diagnostics, sensor_aggregator, "GetSensorValues")
+	Rel(publisher, mqtt, "Publish Message")
+	Rel(publisher, sensor_aggregator, "GetSensorValues")
+	Rel(application, sensor_aggregator, "Enter Low Power Mode")
+}
+
+System_Ext(hardware, "Hardware") {
+	Component_Ext(powerstage, "DC/DC", "Power")
+	Component_Ext(bme280, "BME280", "Ambient sensor")
+	Component_Ext(gp2y1010au, "GP2Y1010", "Dust sensor")
+	Component_Ext(bh1750, "BH1750", "Light sensor")
+	Component_Ext(anemometer, "Anemometer", "Wind sensor")
+	Component_Ext(ublox, "U-Blox NINA", "WiFi")
+	Component_Ext(uart, "UART Header", "")
+	Component_Ext(nvram, "AT24C02", "NVRAM")
+}
+
+BiRel(power, powerstage, "Control/Monitor", "Analog/Digital")
+BiRel(temperature, bme280, "Communication", "I2C")
+BiRel(humidity, bme280, "Communication", "I2C")
+BiRel(pressure, bme280, "Communication", "I2C")
+BiRel(dust, gp2y1010au, "Control", "Analog")
+BiRel(light, bh1750, "Communication", "I2C")
+BiRel(wind, anemometer, "Control", "Analog")
+BiRel(wifi, ublox, "Communication", "SPI")
+BiRel(serial, uart, "Communication", "UART")
+BiRel(configuration, nvram, "Communication", "I2C")
+
+@enduml
+....
+
+== Software integration
+
+=== Standard mode (MQTT)
+
+When WiFi and MQTT settings are correctly configured then the sensors can publish
+data through the MQTT broker and applications can subscribe to the messages.
+
+[blockdiag,mqtt-integration,svg]
+....
+blockdiag {
+  app [label = "Application"];
+  broker [label = "MQTT Broker"];
+  sensor1 [label = "Sensor 1"];
+  sensor2 [label = "Sensor 2"];
+  sensor3 [label = "Sensor 3"];
+
+  app <- broker;
+  broker <- sensor1;
+  broker <- sensor2;
+  broker <- sensor3;
+}
+....

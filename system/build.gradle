@@ -11,3 +11,9 @@ asciidoctor {
   sourceDir file('docs')
   outputDir file("$buildDir/docs")
 }
+
+asciidoctorj {
+  modules {
+    diagram.use() 
+  }
+}

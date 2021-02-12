@@ -1,4 +1,4 @@
-= Software overview
+= Software domain overview
 
 == Software Requirements
 
@@ -7,3 +7,8 @@
 - xref:requirements/memory.adoc[Memory requirements]
 - xref:requirements/power.adoc[Power requirements]
 - xref:requirements/sensor.adoc[Sensor requirements]
+
+== Software Architecture
+
+- xref:architecture/software.adoc[Software architecture]
+- xref:architecture/design-alternatives.adoc[Design alternatives]
