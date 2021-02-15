@@ -1,0 +1,52 @@
+= Application Main
+
+The application main handles the software initialization after reset, the cyclic update of components and the main state transitions such as low power mode.
+
+== Requirements
+
+== Interfaces
+
+=== Setup
+
+[cols="h,1"]
+|===
+|Function |setup
+|Returns |-
+|Description |Initializes all the other software components
+|===
+
+=== Loop
+
+[cols="h,1"]
+|===
+|Function |loop
+|Returns |-
+|Description |Periodically updates all the software components
+|===
+
+== Dynamic behavior
+
+[nomnoml]
+....
+[<start>st] power on reset -> [<state>setup]
+[<state>setup] initialized -> [<state>loop]
+[<state>loop] -> [<state>loop]
+....
+
+== Resource consumption
+
+=== Memory
+
+[cols="h,1"]
+|===
+|RAM |5%
+|ROM |5%
+|===
+
+=== Runtime
+
+|===
+|Function |Average |Max
+|setup |100ms |500ms
+|loop |100ms |500ms
+|===

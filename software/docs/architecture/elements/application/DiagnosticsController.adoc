@@ -1,0 +1,27 @@
+= Diagnostics Controller
+
+== Requirements
+
+== Interfaces
+
+// TODO: define diagnostic interfaces
+
+== Dynamic behavior
+
+// TODO: describe dynamic behavior
+
+== Resource consumption
+
+=== Memory
+
+[cols="h,1"]
+|===
+|RAM |<5%
+|ROM |<5%
+|===
+
+=== Runtime
+
+|===
+|Function |Average |Max
+|===

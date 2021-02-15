@@ -1,0 +1,35 @@
+= Application Main
+
+== Requirements
+
+== Interfaces
+
+=== Publish
+
+[cols="h,1"]
+|===
+|Function |publish
+|Returns |-
+|Description |Publishes the current sensor values over MQTT
+|===
+
+== Dynamic behavior
+
+// TODO: describe dynamic behavior
+
+== Resource consumption
+
+=== Memory
+
+[cols="h,1"]
+|===
+|RAM |<1%
+|ROM |1%
+|===
+
+=== Runtime
+
+|===
+|Function |Average |Max
+|publish |10ms |100ms
+|===
