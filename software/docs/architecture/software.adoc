@@ -88,6 +88,31 @@ BiRel(configuration, nvram, "Communication", "I2C")
 @enduml
 ....
 
+=== Elements
+
+==== Application Layer
+
+- xref:elements/application/ApplicationMain.adoc[Application Main]
+- xref:elements/application/ConfigurationManager.adoc[Configuration Manager]
+- xref:elements/application/DiagnosticsController.adoc[Diagnostics Controller]
+- xref:elements/application/SignalPublisher.adoc[Signal Publisher]
+
+==== Communication Layer
+
+- xref:elements/communication/MQTTConnectionManager.adoc[MQTT Connection Manager]
+- xref:elements/communication/SerialConnectionManager.adoc[Serial Connection Manager]
+- xref:elements/communication/WiFiConnectionManager.adoc[WiFi Connection Manager]
+
+==== Sensor Layer
+
+- xref:elements/sensor/DustSensor.adoc[Dust Sensor]
+- xref:elements/sensor/HumiditySensor.adoc[Humidity Sensor]
+- xref:elements/sensor/LightSensor.adoc[Light Sensor]
+- xref:elements/sensor/PowerHandler.adoc[Power Handler]
+- xref:elements/sensor/PressureSensor.adoc[Pressure Sensor]
+- xref:elements/sensor/TemperatureSensor.adoc[Temperature Sensor]
+- xref:elements/sensor/WindSensor.adoc[Wind Sensor]
+
 == Software integration
 
 === Standard mode (MQTT)

@@ -1,0 +1,63 @@
+= Pressure Sensor
+
+== Requirements
+
+== Interfaces
+
+=== Initialize
+
+[cols="h,1"]
+|===
+|Function |begin
+|Returns |-
+|Description |Initializes the sensor hardware
+|===
+
+=== GetState
+
+[cols="h,1"]
+|===
+|Function |getState
+|Returns |Sensor state `INIT_OK` or `INIT_ERROR`
+|Description |Returns sensor hardware state
+|===
+
+=== GetValue
+
+[cols="h,1"]
+|===
+|Function |getValue
+|Returns |Sensor value `float`
+|Description |Returns currently measured sensor value
+|===
+
+=== GetValueState
+
+[cols="h,1"]
+|===
+|Function |getValueState
+|Returns |Sensor value
+|Description |Returns sensor value state
+|===
+
+== Dynamic behavior
+
+//TODO: describe dynamic behavior
+
+== Resource consumption
+
+=== Memory
+
+[cols="h,1"]
+|===
+|RAM |<1%
+|ROM |1%
+|===
+
+=== Runtime
+
+|===
+|Function |Average |Max
+|begin |50ms |100ms
+|getValue |10ms |20ms
+|===

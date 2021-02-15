@@ -1,0 +1,38 @@
+= Configuration Manager
+
+The configuration manager handles changes to the product's configuration as well as providing this configuration to other components.
+
+== Requirements
+
+== Interfaces
+
+=== Save
+
+[cols="h,1"]
+|===
+|Function |save
+|Returns |`0` if the procedure succeeded
+|Description |Saves the current configuration into NVRAM
+|===
+
+== Dynamic behavior
+
+// TODO: describe save procedure, loading, sram cache
+
+== Resource consumption
+
+=== Memory
+
+[cols="h,1"]
+|===
+|RAM | 5%
+|ROM | 5%
+|NVRAM | 70%
+|===
+
+=== Runtime
+
+|===
+|Function |Average |Max
+|Save |50ms |100ms
+|===

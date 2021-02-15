@@ -1,0 +1,27 @@
+= Application Main
+
+== Requirements
+
+== Interfaces
+
+// TODO: describe interface
+
+== Dynamic behavior
+
+// TODO: describe dynamic behavior
+
+== Resource consumption
+
+=== Memory
+
+[cols="h,1"]
+|===
+|RAM |<5%
+|ROM |<10%
+|===
+
+=== Runtime
+
+|===
+|Function |Average |Max
+|===
