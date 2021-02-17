@@ -1,0 +1,13 @@
+= Sensor requirements
+
+This document specifies the requirements of the sensor hardware.
+
+== ESD
+
+All the user accessible pins shall be ESD tolerant according to
+link:https://www.iso.org/standard/41937.html[ISO 10605].
+
+== EMC
+
+The product shall meet the EN 55011 Standard for Electromagnetic Compatibility in
+emission, conduction and noise immunity categories.

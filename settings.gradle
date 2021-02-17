@@ -6,5 +6,6 @@ buildscript {
 
 include(':system')
 include(':software')
+include(':hardware')
 
 rootProject.name = 'Sense'
