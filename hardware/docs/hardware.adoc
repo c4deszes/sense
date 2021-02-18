@@ -1,0 +1,6 @@
+= Hardware domain overview
+
+== Hardware Requirements
+
+- xref:requirements/power.adoc[Power requirements]
+- xref:requirements/sensor.adoc[Sensor requirements]

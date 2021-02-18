@@ -15,3 +15,7 @@ sw/arch:
   - software/docs/architecture/*
 sw/test:
   - software/test/*
+
+# hardware related changes
+hw/req:
+  - hardware/docs/requirements/*

@@ -1,0 +1,29 @@
+= Power requirements
+
+This document specifies the requirements of the power input.
+
+== Parameters
+
+=== System parameters
+
+[format="csv", options="header"]
+|===
+include::system/params/power.csv[]
+|===
+
+=== Hardware parameters
+
+[format="csv", options="header"]
+|===
+include::hardware/params/power.csv[]
+|===
+
+== Requirements
+
+=== Power input
+
+The power circuit shall accept DC input voltage from <<Hardware parameters,param_power_input_min>> to <<Hardware parameters,param_power_input_max>>.
+
+The power circuit shall tolerate reverse or negative voltage
+(with respect to the product's ground) conditions, with leakage less than
+<<Hardware parameters,param_power_reverse_leakage>>.
