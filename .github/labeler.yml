@@ -19,3 +19,5 @@ sw/test:
 # hardware related changes
 hw/req:
   - hardware/docs/requirements/*
+hw/design:
+  - hardware/docs/design/*
