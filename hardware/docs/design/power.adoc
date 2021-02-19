@@ -1,0 +1,11 @@
+= Power design
+
+== DC/DC converter
+
+link:https://www.st.com/resource/en/datasheet/l5973d.pdf[L5973D Datasheet]
+
+link:https://www.st.com/resource/en/application_note/cd00043744-designing-with-the-25-a-dcdc-converter-l5973d-stmicroelectronics.pdf[L5973D Application note]
+
+== Linear regulator
+
+link:https://www.microchip.com/wwwproducts/en/MIC5234[MIC5234 Datasheet]

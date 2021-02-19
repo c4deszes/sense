@@ -1,0 +1,7 @@
+= Wind Sensor design
+
+== Constant Power supply
+
+link:https://datasheets.maximintegrated.com/en/ds/MAX4210-MAX4211.pdf[MAX4210 Datasheet]
+
+link:https://www.maximintegrated.com/en/design/technical-documents/app-notes/4/4470.html[MAX4210 Constant Power PSU Application note]

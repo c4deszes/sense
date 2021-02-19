@@ -1,0 +1,13 @@
+= Sensor design
+
+== Temperature/Humidity/Pressure Sensor
+
+link:https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf[BME280 Datasheet]
+
+== Light Sensor
+
+link:https://www.mouser.com/datasheet/2/348/bh1750fvi-e-186247.pdf[BH1750 Datasheet]
+
+== Dust Sensor
+
+link:https://global.sharp/products/device/lineup/data/pdf/datasheet/gp2y1010au_e.pdf[GP2Y1010AU Datasheet]
