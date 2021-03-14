@@ -1,0 +1,28 @@
+= Test Environment
+
+== Scope
+
+- Power stage validation
+- Anemometer driver circuit validation
+- Temperature measurements
+- Signal integrity check (I2C, UART signals)
+
+== Instrumentation
+
+=== Power supply
+
+A programmable power supply is used to carry out measurements at different
+input voltages.
+
+=== Oscilloscope
+
+An oscilloscope is used to check signal integrity.
+
+=== DAQ
+
+A Data acqusition unit is used to measure internal temperatures and validate
+the internal signals of the anemometer circuit.
+
+== Test framework
+
+__TBD__

@@ -1,0 +1,52 @@
+= Verification and Validation Strategy
+
+== Process flow
+
+=== Unit testing
+
+Before integrating new software units they must be unit tested. Test driven
+development may be used when developing new components.
+
+[nomnoml]
+....
+[<start>st] -> [<state>Implementing unit]
+[<state>Implementing unit] -> [<state>Implementing unit test]
+[<state>Implementing unit test] -> [<choice>Passing?]
+[<choice>Passing?]yes ->[<state>Reviewing unit & unit test]
+[<choice>Passing?]no ->[<choice>Find failure source]
+[<choice>Find failure source] failure in test -> [<state>Implementing unit test]
+[<choice>Find failure source] failure in unit -> [<state>Implementing unit]
+....
+
+=== Qualification testing
+
+Features are tested by qualification tests, the verification criteria shall be
+defined when defining the requirements.
+
+The tests are preferrably implemented before the feature is merged, in worst
+case has to be completed when the sprint is over.
+
+The process of testing feature is equivalent to unit testing process flow, except
+the test is not required to be passing or be complete before the review.
+
+== Test Methods
+
+=== Unit testing
+
+Each software component is tested via Unit tests. The interfaces are provided
+by the test environment and the values being provided by the tester.
+
+=== Qualification testing
+
+The integrated software is tested in a hardware in a loop test environment
+
+== Test allocation
+
+All tests are automatically reexecuted on every software change.
+
+== Exit criteria
+
+All tests must be executed before a software release and the release report
+shall contain the number of passing, failing and skipped tests.
+
+There's no requirement on how many tests should pass.

@@ -1,0 +1,32 @@
+= Test Environment
+
+== Scope
+
+- Power compliance tests
+- Operational temperature functional tests
+- Anemometer accuracy measurement
+
+== Out of scope
+
+- WiFi communication, MQTT communication (tested in Software)
+- Light, Dust incident measurement (measurements taken over from part manufacturer)
+
+== Instrumentation
+
+=== Power supply
+
+A programmable power supply is used to test power compliance.
+
+=== Serial device
+
+A standard USB to Serial converter is used to communicate with the DUT over
+the diagnostic channel.
+
+=== TBD
+
+Climate chamber, wind tunnel.
+
+== Test Framework
+
+JavaTMC is used for interaction with measurement instrumentation with
+JUnit5 as the surrounding Test framework.

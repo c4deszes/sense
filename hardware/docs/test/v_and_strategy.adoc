@@ -1,0 +1,27 @@
+= Verification and Validation Strategy
+
+== Process flow
+
+[nomnoml]
+....
+[<start>st] -> [<choice>Design ready?]
+[<choice>Design ready?]yes ->[<state>Perform electrical tests]
+[<state>Perform electrical tests] success/failure -> [<end>release]
+....
+
+== Test Methods
+
+=== Static testing
+
+The hardware schematic and layout are tested within the toolchain for common
+eletrical __(ERC)__ and design errors __(DRC)__.
+
+== Test allocation
+
+Static tests are automatically reexecuted on hardware design changes. The rest
+may be partially automated or manual, depending on the complexity.
+
+== Exit criteria
+
+All tests must be executed before a hardware sample release and the release
+report shall contain the measurements.
