@@ -1,0 +1,35 @@
+= Test Environment
+
+== Unit test environment
+
+=== Scope
+
+- Software component validation
+- Application state transitions testing
+
+== Hardware in loop environment
+
+=== Scope
+
+- Serial Diagnostic communication functional tests
+- WiFi Diagnostic communication functional tests
+- MQTT communication functional tests
+- Memory configuration validation
+- Voltage monitoring functional tests
+
+=== Instrumentation
+
+==== Power supply
+
+A programmable power supply is used to test voltage monitoring feature.
+
+==== Debugger
+
+==== Serial device
+
+A standard USB to Serial converter is used to communicate with the DUT over
+the diagnostic channel.
+
+=== Test framework
+
+Pytest is used.

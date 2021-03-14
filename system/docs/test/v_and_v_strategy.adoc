@@ -1,0 +1,36 @@
+= Verification and Validation Strategy
+
+== Process flow
+
+[nomnoml]
+....
+[<start>st] -> [<choice>Release ready?]
+[<choice>Release ready?]yes ->[<state>Perform system tests]
+[<state>Perform system tests] success/failure -> [<state>Perform safety/legal/security tests]
+[<state>Perform safety/legal/security tests] failure -> [<choice>Release ready?]
+[<state>Perform safety/legal/security tests] success -> [<end>release]
+....
+
+== Test Methods
+
+=== Whitebox testing
+
+Some internal signals can be observed through the diagnostic interface.
+These will be used for measurements, because it's faster than doing data logging
+over WiFi.
+
+=== Blackbox testing
+
+The product is tested through the interfaces that are also accessible to users.
+
+== Test allocation
+
+Some of the tests are automatically reexecuted on software, hardware, mechanics
+changes and releases. The rest will be scheduled before a product release.
+
+== Exit criteria
+
+All tests must be executed before a product release and the release report
+shall contain the number of passing, failing and skipped tests.
+
+Safety, security and legal tests must pass before a product release.
