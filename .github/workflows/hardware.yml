@@ -22,7 +22,7 @@ jobs:
     - name: Generate Gerbers
       working-directory: hardware
       run: |
-        kibot sensor/sensor.kicad_pcb -c config/gerbers.yaml
+        kibot -b sensor/sensor.kicad_pcb -c config/gerbers.yaml
 
     - name: Archive Gerbers
       uses: actions/upload-artifact@v2
@@ -41,7 +41,7 @@ jobs:
       - name: Generate BOM
         working-directory: hardware
         run: |
-          kibot sensor/sensor.kicad_pcb -c config/bom.yaml
+          kibot -b sensor/sensor.kicad_pcb -c config/bom.yaml
 
       - name: Archive BOM
         uses: actions/upload-artifact@v2
