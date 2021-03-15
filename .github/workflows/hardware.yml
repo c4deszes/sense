@@ -11,32 +11,57 @@ on:
       - synchronize
 
 jobs:
-  gerbers:
-    name: Gerbers
+  documentation:
+    name: Export Schematic & Layout
     runs-on: ubuntu-latest
     container: setsoft/kicad_auto
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Generate Gerbers
+    - name: Generate schematic document
       working-directory: hardware
       run: |
-        kibot -b sensor/sensor.kicad_pcb -c config/gerbers.yaml
+        kibot -b sensor/sensor.sch -c config/schematic.yaml
 
-    - name: Archive Gerbers
+    - name: Archive schematic
       uses: actions/upload-artifact@v2
       with:
-        name: docs
-        path: hardware/build/gerbers
+        name: schematic
+        path: hardware/build/schematic.pdf
+        if-no-files-found: error
 
-  bom:
-    name: BOM
+    - name: Generate layout document
+      working-directory: hardware
+      run: |
+        kibot -b sensor/sensor.kicad_pcb -c config/layout.yaml
+
+    - name: Archive layout
+      uses: actions/upload-artifact@v2
+      with:
+        name: layout
+        path: hardware/build/layout.pdf
+        if-no-files-found: error
+
+  manufacturing:
+    name: Export Gerbers & BOM
     runs-on: ubuntu-latest
     container: setsoft/kicad_auto
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Generate Gerbers
+        working-directory: hardware
+        run: |
+          kibot -b sensor/sensor.kicad_pcb -c config/gerbers.yaml
+
+      - name: Archive Gerbers
+        uses: actions/upload-artifact@v2
+        with:
+          name: gerbers
+          path: hardware/build/gerbers
+          if-no-files-found: error
 
       - name: Generate BOM
         working-directory: hardware
@@ -46,5 +71,6 @@ jobs:
       - name: Archive BOM
         uses: actions/upload-artifact@v2
         with:
-          name: docs
+          name: bom
           path: hardware/build/bom/*.csv
+          if-no-files-found: error
