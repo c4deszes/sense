@@ -1,0 +1,50 @@
+name: Hardware
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+jobs:
+  gerbers:
+    name: Gerbers
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Generate Gerbers
+      working-directory: hardware
+      run: |
+        kibot sensor/sensor.kicad_pcb -c config/gerbers.yaml
+
+    - name: Archive Gerbers
+      uses: actions/upload-artifact@v2
+      with:
+        name: docs
+        path: hardware/build/gerbers
+
+  bom:
+    name: BOM
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Generate BOM
+        working-directory: hardware
+        run: |
+          kibot sensor/sensor.kicad_pcb -c config/bom.yaml
+
+      - name: Archive BOM
+        uses: actions/upload-artifact@v2
+        with:
+          name: docs
+          path: hardware/build/bom/*.csv

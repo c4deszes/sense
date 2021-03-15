@@ -1,0 +1,41 @@
+{
+	"physical_layer": [
+		{
+			"pin": "PA07",
+			"description": "Dust sensor output",
+			"direction": "input",
+			"class": "analog",
+			"min": 0.0,
+			"max": 1.5,
+			"unit": "V"
+		},
+		{
+			"pin": "PA08",
+			"description": "Dust sensor LED control",
+			"direction": "output",
+			"class": "pwm",
+			"min": 0.0,
+			"max": 3.3,
+			"unit": "V"
+		}
+	],
+	"logical_layer": [
+		{
+			"name": "DUST_OUTPUT",
+			"description": "",
+			"physical": "PA07",
+			"min": 0,
+			"max": 1023,
+			"accuracy": 2
+		},
+		{
+			"name": "DUST_LED",
+			"description": "",
+			"physical": "PA08",
+			"period_min": 0.1,
+			"period_max": 1,
+			"width_min": 0.000250,
+			"width_max": 0.000320
+		}
+	]
+}

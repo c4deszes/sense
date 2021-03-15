@@ -1,0 +1,29 @@
+= Hardware design
+
+== Design overview
+
+[plantuml,software-architecture-details,svg]
+....
+@startuml
+!include C4_Component.puml
+
+LAYOUT_LEFT_RIGHT()
+
+title Sensor Hardware
+
+System_Boundary(hardware, "Hardware") {
+	Component(power, "Power", "Power", "Provides power to all components")
+
+	System_Boundary(sensor, "Sensor") {
+		Component(bme280, "BME280", "Sensor")
+		Component(bh1750, "BH1750", "Sensor")
+		Component(gp2y1010au, "GP2Y1010AU", "Sensor")
+	}
+
+	Component(windsensor, "Wind Sensor", "Sensor", "")
+
+	Component(controller, "Controller", "", "")
+
+	Rel(power_connector, power, "Power")
+}
+....
