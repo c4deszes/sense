@@ -33,5 +33,8 @@ fp-info-cache*
 # Exported step files
 *.step
 
+# DRC and ERC report files
+*-?rc.txt
+
 # Hardware parameters
 !params/*

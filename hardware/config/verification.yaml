@@ -3,6 +3,8 @@ kibot:
 
 preflight:
   run_erc: true
+  # TODO: enable this once this feature has been released
+  #erc_warnings: false
   run_drc: true
   check_zone_fills: true
-  erc_warnings: true
+  ignore_unconnected: false

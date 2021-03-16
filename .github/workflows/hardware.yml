@@ -22,7 +22,15 @@ jobs:
     - name: Check ERC & DRC errors
       working-directory: hardware
       run: |
-        kibot -b sensor/sensor.sch -c config/verification.yaml
+        kibot -e sensor/sensor.sch -b sensor/sensor.kicad_pcb -c config/verification.yaml
+
+    - name: Upload ERC & DRC report
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: report
+        path: hardware/*-?rc.txt
+        if-no-files-found: error
 
   documentation:
     name: Export Schematic & Layout
@@ -35,7 +43,7 @@ jobs:
     - name: Generate schematic document
       working-directory: hardware
       run: |
-        kibot -b sensor/sensor.sch -c config/schematic.yaml
+        kibot -e sensor/sensor.sch -c config/schematic.yaml
 
     - name: Archive schematic
       uses: actions/upload-artifact@v2
