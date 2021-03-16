@@ -11,6 +11,19 @@ on:
       - synchronize
 
 jobs:
+  verification:
+    name: ERC & DRC
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Check ERC & DRC errors
+      working-directory: hardware
+      run: |
+        kibot -b sensor/sensor.sch -c config/verification.yaml
+
   documentation:
     name: Export Schematic & Layout
     runs-on: ubuntu-latest
