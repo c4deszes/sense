@@ -11,29 +11,36 @@ on:
       - synchronize
 
 jobs:
-  verification:
-    name: ERC & DRC
+  ERC:
+    name: ERC
     runs-on: ubuntu-latest
     container: setsoft/kicad_auto
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Check ERC & DRC errors
+    - name: Run ERC
       working-directory: hardware
       run: |
-        kibot -e sensor/sensor.sch -b sensor/sensor.kicad_pcb -c config/verification.yaml
+        kibot -e sensor/sensor.sch -c config/erc.yaml
 
-    - name: Upload ERC & DRC report
-      if: always()
-      uses: actions/upload-artifact@v2
-      with:
-        name: report
-        path: hardware/*-?rc.txt
-        if-no-files-found: error
+  DRC:
+    name: DRC
+    needs: ERC
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Run DRC
+      working-directory: hardware
+      run: |
+        kibot -b sensor/sensor.kicad_pcb -c config/drc.yaml
 
   documentation:
     name: Export Schematic & Layout
+    needs: ERC
     runs-on: ubuntu-latest
     container: setsoft/kicad_auto
     steps:
@@ -66,6 +73,7 @@ jobs:
 
   manufacturing:
     name: Export Gerbers & BOM
+    needs: DRC
     runs-on: ubuntu-latest
     container: setsoft/kicad_auto
     steps:
