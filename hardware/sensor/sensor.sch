@@ -1919,39 +1919,6 @@ F 3 "~" H 10100 1550 50  0001 C CNN
 	1    10100 1550
 	1    0    0    -1  
 $EndComp
-$Comp
-L Mechanical:MountingHole H5
-U 1 1 6052CF12
-P 1150 3200
-F 0 "H5" H 1250 3246 50  0000 L CNN
-F 1 "MountingHole" H 1250 3155 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3mm" H 1150 3200 50  0001 C CNN
-F 3 "~" H 1150 3200 50  0001 C CNN
-	1    1150 3200
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H6
-U 1 1 605478EB
-P 1450 3200
-F 0 "H6" H 1550 3246 50  0000 L CNN
-F 1 "MountingHole" H 1550 3155 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3mm" H 1450 3200 50  0001 C CNN
-F 3 "~" H 1450 3200 50  0001 C CNN
-	1    1450 3200
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H7
-U 1 1 60547B12
-P 1750 3200
-F 0 "H7" H 1850 3246 50  0000 L CNN
-F 1 "MountingHole" H 1850 3155 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3mm" H 1750 3200 50  0001 C CNN
-F 3 "~" H 1750 3200 50  0001 C CNN
-	1    1750 3200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8200 3300 8600 3300
 Wire Wire Line
@@ -1970,17 +1937,6 @@ Text Label 8250 3400 0    50   ~ 0
 N205
 Text Label 8250 3300 0    50   ~ 0
 N203
-$Comp
-L Mechanical:MountingHole H1
-U 1 1 60664E2F
-P 2050 3200
-F 0 "H1" H 2150 3246 50  0000 L CNN
-F 1 "MountingHole" H 2150 3155 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3mm" H 2050 3200 50  0001 C CNN
-F 3 "~" H 2050 3200 50  0001 C CNN
-	1    2050 3200
-	1    0    0    -1  
-$EndComp
 $Comp
 L Connector:TestPoint_Flag TP9
 U 1 1 60690D82
@@ -2031,16 +1987,6 @@ Wire Wire Line
 	6300 6700 6100 6700
 Wire Wire Line
 	6300 6900 6100 6900
-Wire Bus Line
-	4400 5950 4400 6550
-Wire Bus Line
-	3100 5950 3100 6650
-Wire Bus Line
-	2000 5950 2000 6550
-Wire Bus Line
-	10550 3500 10550 6250
-Wire Bus Line
-	6400 5950 6400 6800
 Text Label 6250 6700 0    50   ~ 0
 I2C_SCL
 Text Label 6250 6900 0    50   ~ 0
@@ -2059,12 +2005,69 @@ $EndComp
 $Comp
 L Connector:Conn_01x03_Male J3
 U 1 1 606F26C9
-P 7900 1250
-F 0 "J3" V 7962 1394 50  0000 L CNN
-F 1 "Conn_01x03_Male" V 8053 1394 50  0000 L CNN
-F 2 "" H 7900 1250 50  0001 C CNN
-F 3 "~" H 7900 1250 50  0001 C CNN
-	1    7900 1250
-	0    1    1    0   
+P 7500 3000
+F 0 "J3" V 7562 3144 50  0000 L CNN
+F 1 "Conn_01x03_Male" V 7653 3144 50  0000 L CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 7500 3000 50  0001 C CNN
+F 3 "~" H 7500 3000 50  0001 C CNN
+	1    7500 3000
+	1    0    0    -1  
 $EndComp
+$Comp
+L power:GND #PWR0113
+U 1 1 60532836
+P 7700 2900
+F 0 "#PWR0113" H 7700 2650 50  0001 C CNN
+F 1 "GND" H 7705 2727 50  0000 C CNN
+F 2 "" H 7700 2900 50  0001 C CNN
+F 3 "" H 7700 2900 50  0001 C CNN
+	1    7700 2900
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7700 3100 8100 3100
+Wire Wire Line
+	7700 3000 8100 3000
+Text Label 7850 3000 0    50   ~ 0
+N301
+Text Label 7850 3100 0    50   ~ 0
+N302
+$Comp
+L Connector:TestPoint_Flag TP11
+U 1 1 605799C6
+P 8100 3000
+F 0 "TP11" H 8360 3094 50  0000 L CNN
+F 1 "TestPoint_Flag" H 8360 3003 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 8300 3000 50  0001 C CNN
+F 3 "~" H 8300 3000 50  0001 C CNN
+	1    8100 3000
+	1    0    0    -1  
+$EndComp
+Connection ~ 8100 3000
+Wire Wire Line
+	8100 3000 8600 3000
+$Comp
+L Connector:TestPoint_Flag TP12
+U 1 1 60579F95
+P 8100 3100
+F 0 "TP12" H 8360 3194 50  0000 L CNN
+F 1 "TestPoint_Flag" H 8360 3103 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D1.5mm" H 8300 3100 50  0001 C CNN
+F 3 "~" H 8300 3100 50  0001 C CNN
+	1    8100 3100
+	1    0    0    -1  
+$EndComp
+Connection ~ 8100 3100
+Wire Wire Line
+	8100 3100 8600 3100
+Wire Bus Line
+	4400 5950 4400 6550
+Wire Bus Line
+	3100 5950 3100 6650
+Wire Bus Line
+	2000 5950 2000 6550
+Wire Bus Line
+	10550 3500 10550 6250
+Wire Bus Line
+	6400 5950 6400 6800
 $EndSCHEMATC
