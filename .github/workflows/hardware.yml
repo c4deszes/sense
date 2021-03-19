@@ -71,6 +71,39 @@ jobs:
         path: hardware/build/layout.pdf
         if-no-files-found: error
 
+  render:
+    name: Render
+    needs: ERC
+    runs-on: ubuntu-latest
+    container: setsoft/kicad_auto
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Generate Step file
+        working-directory: hardware
+        run: |
+          kibot -b sensor/sensor.kicad_pcb -c config/render3d.yaml
+
+      - name: Archive Gerbers
+        uses: actions/upload-artifact@v2
+        with:
+          name: model
+          path: hardware/build/pcb.step
+          if-no-files-found: error
+
+      - name: Generate Image
+        working-directory: hardware
+        run: |
+          kibot -b sensor/sensor.kicad_pcb -c config/render2d.yaml
+
+      - name: Archive Gerbers
+        uses: actions/upload-artifact@v2
+        with:
+          name: render
+          path: hardware/build/render.png
+          if-no-files-found: error
+
   manufacturing:
     name: Export Gerbers & BOM
     needs: DRC
