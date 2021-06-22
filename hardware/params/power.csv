@@ -1,0 +1,4 @@
+Id,Parameter,Value,Unit
+param_power_input_min,Maximum Input Voltage,6.0,V
+param_power_input_max,Maximum Input Voltage,32.0,V
+param_power_reverse_leakage,Maximum Input Voltage,100,uA

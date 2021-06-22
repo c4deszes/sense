@@ -17,7 +17,7 @@ _autosave-*
 *.tmp
 *-save.pro
 *-save.kicad_pcb
-fp-info-cache
+fp-info-cache*
 
 # Netlist files (exported from Eeschema)
 *.net
@@ -29,3 +29,12 @@ fp-info-cache
 # Exported BOM files
 *.xml
 *.csv
+
+# Exported step files
+*.step
+
+# DRC and ERC report files
+*-?rc.txt
+
+# Hardware parameters
+!params/*

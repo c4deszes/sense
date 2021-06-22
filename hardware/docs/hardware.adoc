@@ -4,3 +4,11 @@
 
 - xref:requirements/power.adoc[Power requirements]
 - xref:requirements/sensor.adoc[Sensor requirements]
+
+== Hardware Design
+
+- xref:design/hardware.adoc[Hardware design overview]
+- xref:design/controller.adoc[Controller design]
+- xref:design/power.adoc[Power design]
+- xref:design/sensor.adoc[Sensor design]
+- xref:design/windsensor.adoc[Wind Sensor design]
